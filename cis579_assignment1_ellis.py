@@ -1,4 +1,6 @@
 import time
+from matplotlib import pyplot as plt
+import numpy as np
 
 
 def timeme(method):
@@ -146,6 +148,15 @@ def branchAndBound(start, end, graph):
     return None
 
 
+def plotPaths(path, graph):
+    plt.plot([v[0] for v in path], [v[1] for v in path])
+    for barrier in graph.boundries:
+        plt.plot([v[0] for v in barrier], [v[1] for v in barrier])
+    plt.xlim(0, 2)
+    plt.ylim(0, 2)
+    plt.show()
+
+
 def main():
     print(f"********A STAR********\n")
     graph = Node()
@@ -168,10 +179,15 @@ def main():
     path8, cost8 = branchAndBound((2, 2), (0, 0), graph)
 
     print(f"Path 5: {path5}")
-    print(f"Path 6: {path2}")
-    print(f"Path 7: {path3}")
-    print(f"Path 8: {path4}")
+    print(f"Path 6: {path6}")
+    print(f"Path 7: {path7}")
+    print(f"Path 8: {path8}")
     print(f"Total number of extensions: {cost5 + cost6 + cost7 + cost8}")
+
+    plotPaths(path, graph)
+    plotPaths(path2, graph)
+    plotPaths(path3, graph)
+    plotPaths(path4, graph)
 
 
 if __name__ == "__main__":
