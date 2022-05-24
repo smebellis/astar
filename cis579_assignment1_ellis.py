@@ -159,11 +159,13 @@ def plotPaths(path, graph):
 
 def main():
     print(f"********A STAR********\n")
+    tic = time.perf_counter()
     graph = Node()
     path, cost1 = aStar((0, 0), (2, 2), graph)
     path2, cost2 = aStar((0, 2), (2, 0), graph)
     path3, cost3 = aStar((2, 0), (0, 0), graph)
     path4, cost4 = aStar((2, 2), (0, 0), graph)
+    toc = time.perf_counter()
 
     print(f"Path 1: {path}")
     print(f"Path 2: {path2}")
@@ -171,18 +173,23 @@ def main():
     print(f"Path 4: {path4}")
 
     print(f"Total number of extensions: {cost1 + cost2 + cost3 + cost4}\n")
+    print(f"A* took {toc - tic:0.4f} seconds to run\n")
 
     print(f"********Branch and Bound********\n")
+    tic1 = time.perf_counter()
     path5, cost5 = branchAndBound((0, 0), (2, 2), graph)
     path6, cost6 = branchAndBound((0, 2), (2, 0), graph)
     path7, cost7 = branchAndBound((2, 0), (0, 0), graph)
     path8, cost8 = branchAndBound((2, 2), (0, 0), graph)
+    toc1 = time.perf_counter()
 
     print(f"Path 5: {path5}")
     print(f"Path 6: {path6}")
     print(f"Path 7: {path7}")
     print(f"Path 8: {path8}")
-    print(f"Total number of extensions: {cost5 + cost6 + cost7 + cost8}")
+
+    print(f"Total number of extensions: {cost5 + cost6 + cost7 + cost8}\n")
+    print(f"Branch and Bound took {toc1 - tic1:0.4f} seconds to run\n")
 
     plotPaths(path, graph)
     plotPaths(path2, graph)
