@@ -177,15 +177,15 @@ class Node:
 
         for y in range(0, len(self.board)):
             for x in range(0, len(self.board[y])):
-                t = self.board[y][x]
-                if t != 0:
+                square = self.board[y][x]
+                if square != 0:
                     for p in possible_moves:
-                        pt = self.square_at(x + p[0], y + p[1])
-                        if pt == 0:
+                        new_position = self.square_at(x + p[0], y + p[1])
+                        if new_position == 0:
                             neighbour = Node()
                             grid = [list(row) for row in self.board]
-                            grid[y + p[1]][x + p[0]] = t
-                            grid[y][x] = pt
+                            grid[y + p[1]][x + p[0]] = square
+                            grid[y][x] = new_position
                             neighbour.board = tuple([tuple(row) for row in grid])
                             if neighbour not in neighbors:
                                 neighbors.append(neighbour)
