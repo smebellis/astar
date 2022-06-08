@@ -1,4 +1,4 @@
-# CIS 579 First Assignment
+# CIS 579 First Assignment ### cis579_assignment1d_ellis.py is the main file to run.
 ## General Approach to the problem
 
 My approach to this problem was to use small, but manageable functions to keep the code understandable and easy to debug.  I choose python as my language for this problem because it is what I am most familiar with and although the problem was easy to understand, the implementation took more time than expected.  In the beginning stages of development, I was using nested lists to represent each knight’s path to its end state; however, this was not working effectively.  Therefore, I adjusted my approach to the problem and developed a Node class which stored the board state in each instance.  This allowed me to approach the problem by focusing on the board state instead of each individual knight’s movement.  In addition, the board start required the positions casted to a list of tuples.  Having a board state immutable allowed for hashing of the board and comparison of start board and end board.  
